@@ -11,7 +11,7 @@ A modern, interactive analytics dashboard built with React and TypeScript for su
 *(Screenshots will be added after deployment)*
 
 ### Login Page
-![Login Page](https://via.placeholder.com/800x400/0f172a/ffffff?text=Login+Page+with+Animated+Characters)
+![Login Page](https://github.com/KishoreKumar114/smart_supermarket_analysis_dashboard/blob/main/Screenshot%202025-11-10%20001551.png)
 *Beautiful login interface with animated characters and smooth transitions*
 
 ### Main Dashboard
