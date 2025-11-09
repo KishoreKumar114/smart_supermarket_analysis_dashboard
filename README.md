@@ -14,12 +14,15 @@ A modern, interactive analytics dashboard built with React and TypeScript for su
 ![Login Page](https://github.com/KishoreKumar114/smart_supermarket_analysis_dashboard/blob/main/Screenshot%202025-11-10%20001551.png)
 *Beautiful login interface with animated characters and smooth transitions*
 
+###Upload page
+![Login Page](https://github.com/KishoreKumar114/smart_supermarket_analysis_dashboard/blob/main/Screenshot%202025-11-10%20001647.png)
+
 ### Main Dashboard
 ![Dashboard Overview](https://github.com/KishoreKumar114/smart_supermarket_analysis_dashboard/blob/main/Screenshot%202025-11-10%20001722.png)
 *Comprehensive overview with key metrics and performance indicators*
 
 ### Customer Analytics
-![Customer Analytics](https://via.placeholder.com/800x400/1e293b/ffffff?text=Customer+Analytics+Section)
+![Customer Analytics](https://github.com/KishoreKumar114/smart_supermarket_analysis_dashboard/blob/main/Screenshot%202025-11-10%20001804.png)
 *Customer segmentation and behavior analysis with interactive charts*
 
 ## 🎯 Features
