@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supermarket Analytics Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --base-bg-color: #05020D;
+      }
+      
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--base-bg-color);
+        color: #e0e0e0;
+      }
+
+      /* Animated Gradient Background */
+      @keyframes darkGlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .bg-dark-animate {
+        background: linear-gradient(-45deg, #000000, #00BFFF, #FF007F, #FF1E56);
+        background-size: 400% 400%;
+        animation: darkGlow 12s ease infinite;
+      }
+
+      /* Glassmorphism Card */
+      .glass-card {
+        background: rgba(10, 5, 20, 0.4);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 40px rgba(255, 0, 127, 0.1);
+      }
+      
+      /* Neon Glow Inputs */
+      .glow-input {
+        background-color: rgba(10, 5, 20, 0.7) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        transition: all 0.3s ease;
+      }
+      .glow-input:focus {
+        outline: none !important;
+        border-color: rgba(0, 191, 255, 0.8) !important;
+        box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+      }
+
+      /* Gradient Buttons */
+      .btn-gradient {
+        border: none;
+        color: white;
+        font-weight: 600;
+        border-radius: 0.75rem;
+        padding: 0.75rem 1.5rem;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .btn-gradient::before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+        border-radius: inherit;
+        transition: all 0.4s ease-in-out;
+        opacity: 0;
+        filter: blur(15px);
+      }
+      .btn-gradient:hover {
+        transform: translateY(-2px);
+      }
+      .btn-gradient:hover::before {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+      .btn-gradient-login {
+        background: linear-gradient(90deg, #00BFFF, #FF007F);
+      }
+      .btn-gradient-login::before {
+        background: linear-gradient(90deg, #00BFFF, #FF007F);
+      }
+      .btn-gradient-upload {
+        background: linear-gradient(90deg, #FF007F, #FF1E56);
+      }
+      .btn-gradient-upload::before {
+        background: linear-gradient(90deg, #FF007F, #FF1E56);
+      }
+
+      /* Progress Bar */
+      .progress-bar {
+        width: 100%;
+        height: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .progress-bar-inner {
+        height: 100%;
+        border-radius: 0.5rem;
+        background: linear-gradient(90deg, #FF007F, #FF1E56);
+        animation: progress-animation 2s linear infinite, progress-pulse 1.5s ease-out infinite;
+        background-size: 200% 100%;
+        width: 100%;
+      }
+      @keyframes progress-animation {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+      @keyframes progress-pulse {
+        0% { box-shadow: 0 0 5px #FF007F; }
+        50% { box-shadow: 0 0 20px #FF1E56; }
+        100% { box-shadow: 0 0 5px #FF007F; }
+      }
+
+      /* Dashboard Header */
+      .header-glow {
+        position: relative;
+        background-color: rgba(5, 2, 13, 0.7);
+        backdrop-filter: blur(10px);
+      }
+      .header-glow::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #00BFFF, #FF007F, #FF1E56, #00BFFF);
+        background-size: 300% 100%;
+        animation: gradient-underline 8s linear infinite;
+      }
+      @keyframes gradient-underline {
+        0% { background-position: 150% 0; }
+        100% { background-position: -150% 0; }
+      }
+
+      /* Dashboard Cards */
+      .dashboard-component-card {
+        background: rgba(10, 5, 20, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.25rem;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .dashboard-component-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 0 25px rgba(0, 191, 255, 0.3), 0 0 10px rgba(255, 0, 127, 0.2);
+      }
+
+      /* Fade-in Animation */
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.6s ease-out forwards;
+      }
+
+      /* Login Success Confetti */
+      .confetti-piece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 12px;
+        background-color: var(--color);
+        opacity: 0;
+        animation: confetti-pop 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        animation-delay: var(--delay);
+        border-radius: 3px;
+      }
+
+      @keyframes confetti-pop {
+        0% {
+          transform: translate(-50%, -50%) rotate(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(
+              calc(-50% + var(--x) * 250px), 
+              calc(-50% + var(--y) * 250px + 150px)
+            ) 
+            rotate(calc(var(--rot) * 1080deg))
+            scale(0);
+          opacity: 0.5;
+        }
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: #0f172a; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "recharts": "https://aistudiocdn.com/recharts@^3.3.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

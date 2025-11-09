@@ -1,0 +1,5 @@
+{
+  "name": "Smart Supermarket Analytics Dashboard",
+  "description": "A modern supermarket analytics dashboard that uses AI to analyze uploaded sales data and visualize key metrics like customer segmentation, sales trends, top-selling categories, and top customers.",
+  "requestFramePermissions": []
+}
